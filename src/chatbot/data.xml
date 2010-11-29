@@ -7,6 +7,9 @@
             <keyword target="12">Very happy</keyword>
             <keyword target="13">no very happy</keyword>
         </keywords>
+        <dynamic>
+            <keyword>weather</keyword>
+        </dynamic>
     </State>
 
     <State id="11">

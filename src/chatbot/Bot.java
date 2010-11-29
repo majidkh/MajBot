@@ -29,19 +29,29 @@ public class Bot {
         State state = parser.getState(level);
         try
         {
-            String answer = StringIO.ask(state.getMessage());
+            System.out.println(state.getMessage());
+            if(state.getKeywords().isEmpty())
+            {
+                this.level = "0";
+                run();
+                return;
+            }
+
+            String answer = StringIO.readString();
 
             Keyword match = parse(answer, state.getKeywords());
 
             if (match == null)
             {
-                System.out.println("Invalid answer");
+                System.out.println(parser.getInvalidAnswer());
                 run();
+                return;
             }
             else
             {
                 this.level = match.target;
                 run();
+                return;
             }
 
         }
@@ -54,12 +64,12 @@ public class Bot {
 
     private static Keyword parse(String text, ArrayList<Keyword> keylist){
 
-        List givenWords = Arrays.asList(text.split(" "));
+        //List givenWords = Arrays.asList(text.split(" "));
         int bestMatch = -1;
         Keyword match = null;
         for(int i=0; i <keylist.size(); i ++){
-            List keywords = Arrays.asList(keylist.get(i).keyword.split(" "));
-            int matches = getMatches(givenWords, keywords);
+            List<String> keywords = Arrays.asList(keylist.get(i).keyword.split(" "));
+            int matches = getMatches(text, keywords);
 
             if(matches > -1 && matches > bestMatch){
                 match = keylist.get(i);
@@ -70,12 +80,12 @@ public class Bot {
         return match;
     }
 
-    private static int getMatches(List text, List keywords){
+    private static int getMatches(String text, List<String> keywords){
 
         int result = -1;
         for(int i=0; i< keywords.size(); i++){
 
-            if(text.contains(keywords.get(i))){
+            if(text.toLowerCase().indexOf(keywords.get(i).toLowerCase()) >= 0){
                 result++;
             }else{
                 return -1;

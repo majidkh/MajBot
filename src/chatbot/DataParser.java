@@ -24,7 +24,8 @@ public class DataParser
 
     private Document dom;
     private HashMap<String, State> states = new HashMap<String, State>();
-    private ArrayList invalidMessages = new ArrayList();
+    private ArrayList<String> invalidMessages = new ArrayList();
+    private int invalidMessageIndex = 0;
 
     // default constructor
     public DataParser()
@@ -156,13 +157,25 @@ public class DataParser
         return textVal;
     }
 
+    public String getInvalidAnswer()
+    {
+        String answer = invalidMessages.get(invalidMessageIndex);
+        invalidMessageIndex++;
+        if(invalidMessageIndex >= invalidMessages.size()){
+            invalidMessageIndex = 0;
+        }
+        return answer;
+    }
+
     private void loadConfiguration()
     {
         // get elements
         Element docEle = dom.getDocumentElement();
 
         // get all State node names
-        NodeList nl = docEle.getElementsByTagName("InvalidMessages");
+        NodeList node = docEle.getElementsByTagName("InvalidMessages");
+
+        NodeList nl = ((Element) node.item(0)).getElementsByTagName("message");
 
         // if node is not null and has children
         if (nl != null && nl.getLength() > 0)
@@ -176,10 +189,8 @@ public class DataParser
                 Element el = (Element) nl.item(i);
 
                 // get state id, message and keywords
-                String message = getTextValue(el, "message");
+                String message = el.getFirstChild().getNodeValue();
                 invalidMessages.add(message);
-                System.out.println(message);
-
             }
         }
     }

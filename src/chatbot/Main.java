@@ -30,36 +30,4 @@ public class Main {
 
     }
 
-    private static String parse(String text){
-
-        List words = Arrays.asList(text.split(" "));
-        int bestMatch = -1;
-        String answer = "no answer";
-        for(int i=0; i <keylist.size(); i ++){
-            List keywords = Arrays.asList(keylist.get(i).split(" "));
-            int matches = getMatches(words, keywords);
-            if(matches > -1 && matches > bestMatch){
-                answer = keylist.get(i);
-                bestMatch = matches;
-            }    
-        }
-
-        return answer;
-    }
-
-    private static int getMatches(List text, List keywords){
-
-        int result = -1;
-        for(int i=0; i< keywords.size(); i++){
-
-            if(text.contains(keywords.get(i))){
-                result++;
-            }else{
-                return -1;
-            }
-        }
-
-        return result;
-    }
-
 }
