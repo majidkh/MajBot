@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Config>
+<States>
     <State id="0">
         <message>Hello, how are you today?</message>
         <keywords>
@@ -52,10 +52,4 @@
         <message>You are greedy!</message>
         <keywords></keywords>
     </State>
-    <InvalidMessages>
-        <message>Huh, I didn't understand?</message>
-        <message>Sorry, I am slow!</message>
-        <message>What do you mean?</message>
-        <message>Could you explain?</message>
-    </InvalidMessages>
-</Config>
+</States>

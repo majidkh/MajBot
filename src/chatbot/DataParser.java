@@ -19,105 +19,168 @@ import org.xml.sax.SAXException;
  *
  * @author Majid
  */
-public class DataParser {
+public class DataParser
+{
 
-    private int level = 0;
     private Document dom;
-    HashMap<String, State> states = new HashMap<String, State>();
+    private HashMap<String, State> states = new HashMap<String, State>();
+    private ArrayList invalidMessages = new ArrayList();
 
-    public DataParser(int level) {
+    // default constructor
+    public DataParser()
+    {
 
-        this.level = level;
-        //get the factory
+        // Load the XML file and parse it
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         try {
 
             //Using factory get an instance of document builder
             DocumentBuilder db = dbf.newDocumentBuilder();
+
             //parse using builder to get DOM representation of the XML file
             dom = db.parse("src/chatbot/data.xml");
-        } catch (ParserConfigurationException pce) {
+
+            // Load states from XML file
+            loadConfiguration();
+            loadStates();
+        } 
+        catch (ParserConfigurationException pce)
+        {
             pce.printStackTrace();
-        } catch (SAXException se) {
+        } 
+        catch (SAXException se)
+        {
             se.printStackTrace();
-        } catch (IOException ioe) {
+        } 
+        catch (IOException ioe)
+        {
             ioe.printStackTrace();
         }
-        loadStates();
     }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
+    // Load states from XML file
+    private void loadStates()
+    {
 
-    // Load states
-    private void loadStates() {
-
+        // get elements
         Element docEle = dom.getDocumentElement();
 
+        // get all State node names
         NodeList nl = docEle.getElementsByTagName("State");
-        if (nl != null && nl.getLength() > 0) {
 
-            for (int i = 0; i < nl.getLength(); i++) {
+        // if node is not null and has children
+        if (nl != null && nl.getLength() > 0)
+        {
 
-                //get the employee element
+            // loop through all children
+            for (int i = 0; i < nl.getLength(); i++)
+            {
+
+                // get state element
                 Element el = (Element) nl.item(i);
 
+                // get state id, message and keywords
                 String id = el.getAttribute("id");
+                String message = getTextValue(el, "message");
+                ArrayList keywords = getKeywords(el);
 
-                //get the Employee object
-                State state = getState(el, id);
+                // construct a new State object
+                State state = new State(id, message, keywords);
 
+                // add the state to the states hashmap
                 states.put(id, state);
-
-
             }
         }
-
-
     }
 
-    public void getMessage(String id) {
-        State state = states.get(id);
+    // get state object by id
+    public State getState(String id)
+    {
+        return states.get(id);
     }
 
-    private State getState(Element empEl, String id) {
 
-        String message = getTextValue(empEl, "message");
-        ArrayList keywords = getKeywords(empEl);
-        State state = new State(id, message, keywords);
-        return state;
-    }
-
-    public ArrayList getKeywords(Element ele) {
+    // get all keywords in an State tag
+    public ArrayList getKeywords(Element ele) 
+    {
+        // construct keywords arraylist
         ArrayList keywords = new ArrayList();
-        NodeList nl = ele.getElementsByTagName("keyword");
-        if (nl != null && nl.getLength() > 0) {
 
+        // get all nodes by keyword tag name
+        NodeList nl = ele.getElementsByTagName("keyword");
+
+        // if the tag is not null and has children
+        if (nl != null && nl.getLength() > 0)
+        {
+
+            // loop through all the children
             for (int i = 0; i < nl.getLength(); i++) {
 
                 //get the keyword element
                 Element el = (Element) nl.item(i);
 
-                Keyword keyword = new Keyword(el.getFirstChild().getNodeValue(), el.getAttribute("target"));
-                if (keyword != null) {
-                    keywords.add(keyword);
-                }
+                // find the keyword title and target state
+                String word = el.getFirstChild().getNodeValue();
+                String target = el.getAttribute("target");
 
+                // construct a new keyword
+                Keyword keyword = new Keyword(word, target);
+
+                // add the keyword to keywords array list
+                keywords.add(keyword);
             }
         }
+
+        // return all the keywords in the given tag
         return keywords;
     }
 
-    private String getTextValue(Element ele, String tagName) {
+    // get a value of a tag inside given element by tag name
+    private String getTextValue(Element ele, String tagName)
+    {
         String textVal = null;
+        
+        // find the tag
         NodeList nl = ele.getElementsByTagName(tagName);
-        if (nl != null && nl.getLength() > 0) {
+
+        // if the tag is not null and has children
+        if (nl != null && nl.getLength() > 0)
+        {
+            // get first element and its node value
             Element el = (Element) nl.item(0);
             textVal = el.getFirstChild().getNodeValue();
         }
 
+        // return the string in the tag
         return textVal;
+    }
+
+    private void loadConfiguration()
+    {
+        // get elements
+        Element docEle = dom.getDocumentElement();
+
+        // get all State node names
+        NodeList nl = docEle.getElementsByTagName("InvalidMessages");
+
+        // if node is not null and has children
+        if (nl != null && nl.getLength() > 0)
+        {
+
+            // loop through all children
+            for (int i = 0; i < nl.getLength(); i++)
+            {
+
+                // get state element
+                Element el = (Element) nl.item(i);
+
+                // get state id, message and keywords
+                String message = getTextValue(el, "message");
+                invalidMessages.add(message);
+                System.out.println(message);
+
+            }
+        }
     }
 }

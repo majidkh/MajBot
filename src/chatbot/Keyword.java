@@ -9,11 +9,14 @@ package chatbot;
  *
  * @author Majid
  */
-public class Keyword {
+public class Keyword
+{
 
     public String keyword;
     public String target;
-    public Keyword(String keyword, String target){
+
+    public Keyword(String keyword, String target)
+    {
         this.keyword = keyword;
         this.target = target;
     }

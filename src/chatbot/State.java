@@ -11,15 +11,33 @@ import java.util.ArrayList;
  *
  * @author Majid
  */
-public class State {
-    public String id = "";
-    public String message = "";
-    public ArrayList keywords;
-    public State(String id, String message, ArrayList keywords){
+public class State
+{
+    private String id = "";
+    private String message = "";
+    private ArrayList keywords;
+    
+    public State(String id, String message, ArrayList keywords)
+    {
         this.id = id;
         this.message = message;
-        this.keywords = keywords;
-        System.out.println(message);
-        
+        this.keywords = keywords;        
     }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public String getMessage()
+    {
+        return message;
+    }
+
+    public ArrayList getKeywords()
+    {
+        return keywords;
+    }
+
+    
 }

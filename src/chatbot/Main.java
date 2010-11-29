@@ -22,15 +22,10 @@ public class Main {
      */
     private static ArrayList<String> keylist = new ArrayList<String>();
     public static void main(String[] args) {
-        // TODO code application logic here
-        //keylist.add("foo");
-        //keylist.add("very sad");
-        //keylist.add("very happy");
-        //keylist.add("not happy");
-        //keylist.add("not very happy");
 
-        //System.out.println(parse("I am not very happy "));
-        DataParser dp = new DataParser(0);
+        DataParser dp = new DataParser();
+        Bot bot = new Bot("0", dp);
+        bot.run();
 
 
     }
