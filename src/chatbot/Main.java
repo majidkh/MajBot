@@ -23,9 +23,10 @@ public class Main {
     private static ArrayList<String> keylist = new ArrayList<String>();
     public static void main(String[] args) {
 
-        DataParser dp = new DataParser();
+        /*DataParser dp = new DataParser();
         Bot bot = new Bot("0", dp);
-        bot.run();
+        bot.run();*/
+        new ChatBotForm().setVisible(true);
 
        //Weather weather = new Weather();
     }
