@@ -32,7 +32,7 @@ public class Bot {
             System.out.println(state.getMessage());
             if(state.getKeywords().isEmpty())
             {
-                this.level = "0";
+                this.level = "1";
                 run();
                 return;
             }

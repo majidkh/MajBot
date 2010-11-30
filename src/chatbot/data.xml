@@ -12,6 +12,11 @@
         </dynamic>
     </State>
 
+    <State id="1">
+        <message>What do you want to talk about?</message>
+        <keyword target="200">weather</keyword>
+    </State>
+
     <State id="11">
         <message>That's great, why you are happy?</message>
         <keywords>
