@@ -124,9 +124,11 @@ public class DataParser
                 // find the keyword title and target state
                 String word = el.getFirstChild().getNodeValue();
                 String target = el.getAttribute("target");
+                String action = el.getAttribute("action");
+                String arg = el.getAttribute("arg");
 
                 // construct a new keyword
-                Keyword keyword = new Keyword(word, target);
+                Keyword keyword = new Keyword(word, target, action , arg);
 
                 // add the keyword to keywords array list
                 keywords.add(keyword);

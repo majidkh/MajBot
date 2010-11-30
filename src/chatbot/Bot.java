@@ -37,6 +37,8 @@ public class Bot {
                 return;
             }
 
+
+
             String answer = StringIO.readString();
 
             Keyword match = parse(answer, state.getKeywords());
@@ -49,9 +51,17 @@ public class Bot {
             }
             else
             {
-                this.level = match.target;
-                run();
-                return;
+                if(match.action.equals("getWeather")){
+                    Weather weather = new Weather();
+                    System.out.println(weather.getWeather(match.arg));
+                    this.level = "1";
+                    run();
+                    return;
+                }else{
+                    this.level = match.target;
+                    run();
+                    return;
+                }
             }
 
         }

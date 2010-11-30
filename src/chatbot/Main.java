@@ -27,7 +27,7 @@ public class Main {
         Bot bot = new Bot("0", dp);
         bot.run();
 
-
+       //Weather weather = new Weather();
     }
 
 }
