@@ -6,6 +6,7 @@
 package chatbot;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -14,13 +15,13 @@ import java.util.ArrayList;
 public class State
 {
     private String id = "";
-    private String message = "";
+    private ArrayList messages ;
     private ArrayList keywords;
     
-    public State(String id, String message, ArrayList keywords)
+    public State(String id, ArrayList messages, ArrayList keywords)
     {
         this.id = id;
-        this.message = message;
+        this.messages = messages;
         this.keywords = keywords;        
     }
 
@@ -31,7 +32,8 @@ public class State
 
     public String getMessage()
     {
-        return message;
+        Random generator = new Random();
+        return messages.get(generator.nextInt(messages.size())).toString();
     }
 
     public ArrayList getKeywords()

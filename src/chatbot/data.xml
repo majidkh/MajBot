@@ -3,14 +3,18 @@
     <State id="0">
         <message>Hello, how are you today?</message>
         <keywords>
-            <keyword target="11">happy</keyword>
-            <keyword target="12">Very happy</keyword>
-            <keyword target="13">no very happy</keyword>
+            <keyword target="11">happy, very happy</keyword>
+            <keyword target="13">no very happy, not good, not fine</keyword>
+            <keyword target="12">fine, good, thanks</keyword>
+            <keyword target="14">yourself</keyword>
         </keywords>
     </State>
 
     <State id="1">
-        <message>What do you want to talk about?</message>
+        <messages>
+            <message>What do you want to talk about?</message>
+            <message>What else?</message>
+        </messages>
         <keyword action="getWeather" arg="today">weather</keyword>
         <keyword action="getWeather" arg="tomorrow">tomorrow weather</keyword>
         <keyword action="getWeather" arg="dayaftertomorrow">day after tomorrow</keyword>
@@ -24,10 +28,8 @@
     </State>
 
     <State id="12">
-        <message>That's sounds you are very happy?</message>
-        <keywords>
-            <keyword target="21">lottery</keyword>
-        </keywords>
+        <message>Glad to hear it!</message>
+        <keywords></keywords>
     </State>
 
     <State id="13">
@@ -35,6 +37,10 @@
         <keywords>
             <keyword target="22">sick</keyword>
         </keywords>
+    </State>
+
+    <State id="14">
+        <message>I'm very well, thanks.</message>
     </State>
 
     <State id="21">
