@@ -1,27 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package chatbot;
 
 /**
  *
- * @author Majid
+ * @author Seyed Majid Khosravi
  */
-public class Keyword
-{
+public class Keyword {
 
     public String keyword = "";
     public String target = "";
-    public String action = "";
+    public String className = "";
     public String arg = "";
 
-    public Keyword(String keyword, String target, String action, String arg)
-    {
+    // default constructor, constructs a keyword object
+    public Keyword(String keyword, String target, String className, String arg) {
         this.keyword = keyword;
         this.target = target;
-        this.action = action;
+        this.className = className;
         this.arg = arg;
     }
 }

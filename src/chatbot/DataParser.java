@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package chatbot;
 
 import java.io.IOException;
@@ -17,7 +13,7 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * @author Majid
+ * @author Seyed Majid Khosravi
  */
 public class DataParser {
 
@@ -40,7 +36,7 @@ public class DataParser {
             //parse using builder to get DOM representation of the XML file
             dom = db.parse("src/chatbot/data.xml");
 
-            // Load states from XML file
+            // Load configuration and states from the XML file
             loadConfiguration();
             loadStates();
         } catch (ParserConfigurationException pce) {
@@ -55,7 +51,7 @@ public class DataParser {
     // Load states from XML file
     private void loadStates() {
 
-        // get elements
+        // get document element object
         Element docEle = dom.getDocumentElement();
 
         // get all State node names
@@ -70,25 +66,28 @@ public class DataParser {
                 // get state element
                 Element el = (Element) nl.item(i);
 
-                // get state id, message and keywords
+                // get state id
                 String id = el.getAttribute("id");
+
+                // get all state messages
                 ArrayList messages = new ArrayList();
+                NodeList messagesNodeList = el.getElementsByTagName("message");
 
-                NodeList messagesNl = el.getElementsByTagName("message");
-
-                // if node is not null and has children
-                if (messagesNl != null && messagesNl.getLength() > 0) {
+                // if messages node is not null and has children
+                if (messagesNodeList != null && messagesNodeList.getLength() > 0) {
 
                     // loop through all children
-                    for (int j = 0; j < messagesNl.getLength(); j++) {
+                    for (int j = 0; j < messagesNodeList.getLength(); j++) {
 
-                        // get state element
-                        Element elmsg = (Element) messagesNl.item(j);
+                        // get current message element
+                        Element elmsg = (Element) messagesNodeList.item(j);
 
-                        // get state id, message and keywords
+                        // append message node value to the messages list
                         messages.add(elmsg.getFirstChild().getNodeValue());
                     }
                 }
+
+                // get keywords in the current state
                 ArrayList keywords = getKeywords(el);
 
                 // construct a new State object
@@ -107,6 +106,7 @@ public class DataParser {
 
     // get all keywords in an State tag
     public ArrayList getKeywords(Element ele) {
+
         // construct keywords arraylist
         ArrayList keywords = new ArrayList();
 
@@ -122,16 +122,23 @@ public class DataParser {
                 //get the keyword element
                 Element el = (Element) nl.item(i);
 
-                // find the keyword title and target state
+                // find the keyword target, classname and argument attributes
                 String wordTag = el.getFirstChild().getNodeValue();
-                String[] words = wordTag.split(",");
                 String target = el.getAttribute("target");
-                String action = el.getAttribute("action");
+                String className = el.getAttribute("className");
                 String arg = el.getAttribute("arg");
+
+                // split keyword by comma
+                String[] words = wordTag.split(",");
+
+                // loop through all words
                 for (String word : words) {
+
+                    // trim the word to remove spaces
                     word = word.trim();
+                    
                     // construct a new keyword
-                    Keyword keyword = new Keyword(word, target, action, arg);
+                    Keyword keyword = new Keyword(word, target, className, arg);
 
                     // add the keyword to keywords array list
                     keywords.add(keyword);
@@ -139,30 +146,18 @@ public class DataParser {
             }
         }
 
-        // return all the keywords in the given tag
+        // return all the keywords in the given node
         return keywords;
     }
 
-    // get a value of a tag inside given element by tag name
-    private String getTextValue(Element ele, String tagName) {
-        String textVal = null;
 
-        // find the tag
-        NodeList nl = ele.getElementsByTagName(tagName);
-
-        // if the tag is not null and has children
-        if (nl != null && nl.getLength() > 0) {
-            // get first element and its node value
-            Element el = (Element) nl.item(0);
-            textVal = el.getFirstChild().getNodeValue();
-        }
-
-        // return the string in the tag
-        return textVal;
-    }
-
+    // returns one of the invalid messages and move the index to the next message
     public String getInvalidAnswer() {
+
+        // get current answer
         String answer = invalidMessages.get(invalidMessageIndex);
+
+        // increase the index, if it is end of messages, reset the index to 0
         invalidMessageIndex++;
         if (invalidMessageIndex >= invalidMessages.size()) {
             invalidMessageIndex = 0;
@@ -170,13 +165,16 @@ public class DataParser {
         return answer;
     }
 
+    // load cofig tags from data xml file
     private void loadConfiguration() {
-        // get elements
+
+        // get document element
         Element docEle = dom.getDocumentElement();
 
-        // get all State node names
+        // get all node names for invalid messages
         NodeList node = docEle.getElementsByTagName("InvalidMessages");
 
+        // get all message nodes inside invalid messages node
         NodeList nl = ((Element) node.item(0)).getElementsByTagName("message");
 
         // if node is not null and has children
@@ -185,10 +183,10 @@ public class DataParser {
             // loop through all children
             for (int i = 0; i < nl.getLength(); i++) {
 
-                // get state element
+                // get message node
                 Element el = (Element) nl.item(i);
 
-                // get state id, message and keywords
+                // get message and add it to invalid messages array
                 String message = el.getFirstChild().getNodeValue();
                 invalidMessages.add(message);
             }

@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package chatbot;
 
 import java.util.ArrayList;
@@ -10,36 +5,34 @@ import java.util.Random;
 
 /**
  *
- * @author Majid
+ * @author Seyed Majid Khosravi
  */
-public class State
-{
+public class State {
+
     private String id = "";
-    private ArrayList messages ;
+    private ArrayList messages;
     private ArrayList keywords;
-    
-    public State(String id, ArrayList messages, ArrayList keywords)
-    {
+
+    // default constructor, constructs State object
+    public State(String id, ArrayList messages, ArrayList keywords) {
         this.id = id;
         this.messages = messages;
-        this.keywords = keywords;        
+        this.keywords = keywords;
     }
 
-    public String getId()
-    {
+    // get state id
+    public String getId() {
         return id;
     }
 
-    public String getMessage()
-    {
+    // get random state messages
+    public String getMessage() {
         Random generator = new Random();
         return messages.get(generator.nextInt(messages.size())).toString();
     }
 
-    public ArrayList getKeywords()
-    {
+    // get state keywords
+    public ArrayList getKeywords() {
         return keywords;
     }
-
-    
 }

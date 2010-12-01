@@ -15,9 +15,9 @@
             <message>What do you want to talk about?</message>
             <message>What else?</message>
         </messages>
-        <keyword action="getWeather" arg="today">weather</keyword>
-        <keyword action="getWeather" arg="tomorrow">tomorrow weather</keyword>
-        <keyword action="getWeather" arg="dayaftertomorrow">day after tomorrow</keyword>
+        <keyword className="Weather" arg="today">weather</keyword>
+        <keyword className="Weather" arg="tomorrow">tomorrow weather</keyword>
+        <keyword className="Weather" arg="dayaftertomorrow">day after tomorrow</keyword>
     </State>
 
     <State id="11">
