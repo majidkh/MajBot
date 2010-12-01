@@ -4,17 +4,18 @@
         <message>Hello, how are you today?</message>
         <keywords>
             <keyword target="11">happy, very happy</keyword>
-            <keyword target="13">no very happy, not good, not fine</keyword>
-            <keyword target="12">fine, good, thanks</keyword>
+            <keyword target="13">not happy,not good,not fine,sad,upset</keyword>
+            <keyword target="23">fine, good, thanks</keyword>
             <keyword target="14">yourself</keyword>
+            <keyword target="44">*</keyword>
         </keywords>
     </State>
 
     <State id="1">
-        <messages>
-            <message>What do you want to talk about?</message>
-            <message>What else?</message>
-        </messages>
+        <message>What do you want to talk about?</message>
+        <message>What else?</message>
+        <message>Tell me more...</message>
+        <message>What is it that you really want to know? </message>
         <keyword className="Weather" arg="today">weather</keyword>
         <keyword className="Weather" arg="tomorrow">tomorrow weather</keyword>
         <keyword className="Weather" arg="dayaftertomorrow">day after tomorrow</keyword>
@@ -24,18 +25,17 @@
         <message>That's great, why you are happy?</message>
         <keywords>
             <keyword target="21">lottery</keyword>
+            <keyword target="23">finish assignment</keyword>
+            <keyword target="32">holiday</keyword>
+            <keyword target="22">*</keywords>
         </keywords>
-    </State>
-
-    <State id="12">
-        <message>Glad to hear it!</message>
-        <keywords></keywords>
     </State>
 
     <State id="13">
         <message>Why, what is wrong?</message>
         <keywords>
             <keyword target="22">sick</keyword>
+            <keyword target="25">*</keyword>
         </keywords>
     </State>
 
@@ -53,22 +53,67 @@
 
     <State id="22">
         <message>Oh, I hope you get better soon</message>
-        <keywords></keywords>
+    </State>
+
+    <State id="23">
+        <message>That's good, what is your plan?</message>
+        <keywords>
+            <keyword target="32">holiday</keyword>
+            <keyword target="33">about,what</keyword>
+        </keywords>
+    </State>
+
+    <State id="24">
+        <message>Do you believe that is a good reason to be happy?</message>
+        <keyword target="43">*</keyword>
+    </State>
+
+    <State id="25">
+        <message>Sorry to hear that! What happen?</message>
+        <keyword target="44">*</keyword>
     </State>
 
     <State id="31">
         <message>Great, I appreciate that</message>
-        <keywords></keywords>
+    </State>
+
+    <State id="32">
+        <message>Cool, that sounds like a good plan.</message>
+        <message>I wish I could come</message>
+    </State>
+
+    <State id="33">
+        <message>Any plan for your future?</message>
+        <keyword target="42">no</keyword>
+        <keyword target="43">*</keyword>
     </State>
 
     <State id="41">
         <message>You are greedy!</message>
-        <keywords></keywords>
     </State>
+
+    <State id="42">
+        <message>Why not?</message>
+        <keyword target="43">*</keyword>
+    </State>
+
+    <State id="43">
+        <message>Interesting...</message>
+        <message>I see...</message>
+        <message>Hmmm...</message>
+        <message>No comment...</message>
+    </State>
+
+    <State id="44">
+        <message>What do you mean?</message>
+        <keyword target="43">*</keyword>
+    </State>
+    
     <InvalidMessages>
         <message>Huh, I didn't understand?</message>
         <message>Sorry, I am slow!</message>
         <message>What do you mean?</message>
         <message>Could you explain?</message>
+        <message>Sorry about that, please explain clearly</message>
     </InvalidMessages>
 </Config>

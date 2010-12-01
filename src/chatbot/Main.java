@@ -8,7 +8,7 @@ public class Main extends javax.swing.JFrame {
 
     private Bot bot;
 
-    /** Creates new form ChatBotForm */
+    // default constructor
     public Main() {
         initComponents();
 

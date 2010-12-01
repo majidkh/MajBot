@@ -104,6 +104,11 @@ public class Bot {
         // no match by default
         int result = -1;
 
+        // return 1 match when keyword is *
+        if(keywords.size() == 1 && keywords.get(0).equals("*")){
+            return 1;
+        }
+
         // loop through list of the keywords
         for (int i = 0; i < keywords.size(); i++) {
 
