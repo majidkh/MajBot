@@ -7,6 +7,7 @@
             <keyword target="13">not happy,not good,not fine,sad,upset</keyword>
             <keyword target="23">fine, good, thanks</keyword>
             <keyword target="14">yourself</keyword>
+            <keyword target="14">I am (.*)</keyword>
             <keyword target="44">*</keyword>
         </keywords>
     </State>
@@ -60,6 +61,7 @@
         <keywords>
             <keyword target="32">holiday</keyword>
             <keyword target="33">about,what</keyword>
+            <keyword target="43">*</keyword>
         </keywords>
     </State>
 
