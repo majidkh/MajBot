@@ -84,10 +84,10 @@ public class Bot {
         for (int i = 0; i < keylist.size(); i++) {
 
             // extract all words in each keyword text
-            List<String> keywords = Arrays.asList(keylist.get(i).keyword.split(" "));
+            //List<String> keywords = Arrays.asList(keylist.get(i).keyword.split(" "));
 
             // get number of matches of the keyword with given text
-            int matches = getMatches(text, keywords);
+            int matches = getMatches(text, keylist.get(i));
 
             // if match is better than best match, replace it
             if (matches > -1 && matches > bestMatch) {
@@ -99,21 +99,25 @@ public class Bot {
     }
 
     // get number of matches of the given keywords in the given list
-    private static int getMatches(String text, List<String> keywords) {
+    private static int getMatches(String text, Keyword keyword) {
 
         // no match by default
         int result = -1;
 
         // return 0 match when keyword is *
-        if(keywords.size() == 1 && keywords.get(0).equals("*")){
+        if(keyword.keyword.equals("*")){
             return 0;
         }
 
+
+        String[] words = keyword.keyword.split(" ");
+
+
         // loop through list of the keywords
-        for (int i = 0; i < keywords.size(); i++) {
+        for (String word : words) {
 
             // if current keyword is in the text, add one score
-            if (text.toLowerCase().indexOf(keywords.get(i).toLowerCase()) >= 0) {
+            if (text.toLowerCase().indexOf(word.toLowerCase()) >= 0) {
                 result++;
             } else {
                 // return null if one of the keywords does not exists

@@ -127,6 +127,7 @@ public class DataParser {
                 String target = el.getAttribute("target");
                 String className = el.getAttribute("className");
                 String arg = el.getAttribute("arg");
+                String regex = el.getAttribute("regex");
 
                 // split keyword by comma
                 String[] words = wordTag.split(",");
@@ -138,7 +139,7 @@ public class DataParser {
                     word = word.trim();
                     
                     // construct a new keyword
-                    Keyword keyword = new Keyword(word, target, className, arg);
+                    Keyword keyword = new Keyword(word, target, className, arg, regex);
 
                     // add the keyword to keywords array list
                     keywords.add(keyword);
