@@ -34,7 +34,8 @@ public class State {
     // replace message dynamic field with given argument
     public String getMessage(String arg){
         Random generator = new Random();
-        return messages.get(generator.nextInt(messages.size())).replaceFirst("{1}", arg);
+        String message = messages.get(generator.nextInt(messages.size()));
+        return message.replaceAll("\\[1\\]", arg.toString());
     }
 
     // get state keywords

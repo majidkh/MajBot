@@ -45,7 +45,8 @@
     </State>
 
     <State id="15">
-        <message>Why you are {1}?</message>
+        <message>Why you are [1]?</message>
+        <keyword target="26" regex="{1}">.*because ([a-zA-Z]+).*</keyword>
     </State>
 
     <State id="21">
@@ -77,6 +78,11 @@
     <State id="25">
         <message>Sorry to hear that! What happen?</message>
         <keyword target="44">*</keyword>
+    </State>
+
+    <State id="26">
+        <message>do you think {1} is a good reason?</message>
+        <keyword target="43">*</keyword>
     </State>
 
     <State id="31">

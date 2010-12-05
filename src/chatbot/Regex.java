@@ -26,10 +26,8 @@ public class Regex {
         return "";
     }
 
-    public static void main(String[] args) {
-        //Pattern p = Pattern.compile(".*?([^.]+\\.[^.]+)");
-
-        System.out.println(Regex.match(".*I am ([a-zA-Z]+).*","I am hungry"));
+    public static String replace(String text, String find){
+        return text.replaceAll("\\[1\\]", find);
     }
 
 

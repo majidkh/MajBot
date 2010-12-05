@@ -22,9 +22,9 @@ public class Bot {
     }
 
     // get current state message
-    public String getMessage() {
+    public String getMessage(String arg) {
         State state = parser.getState(level);
-        return state.getMessage();
+        return state.getMessage(arg);
     }
 
     // send user message to the bot and get the response
@@ -63,7 +63,7 @@ public class Bot {
                     this.level = match.target;
                     state = parser.getState(level);
                     if (state.getKeywords().isEmpty()) {
-                        response = this.getMessage();
+                        response = this.getMessage(match.regexMatch);
                         this.level = "1";
 
                     }
