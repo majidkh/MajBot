@@ -8,6 +8,7 @@
             <keyword target="23">fine, good, thanks</keyword>
             <keyword target="14">yourself</keyword>
             <keyword target="15" regex="{1}">.*I am ([a-zA-Z]+).*</keyword>
+            <keyword target="16" regex="{name}">.*my name is ([a-zA-z]+).*</keyword>
             <keyword target="44">*</keyword>
         </keywords>
     </State>
@@ -47,6 +48,10 @@
     <State id="15">
         <message>Why you are [1]?</message>
         <keyword target="26" regex="{1}">.*because (.*)</keyword>
+    </State>
+
+    <State id="16">
+        <message>Hello {name} Good to see you!</message>
     </State>
 
     <State id="21">
