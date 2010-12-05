@@ -26,8 +26,10 @@ public class Regex {
         return "";
     }
 
-    public static String replace(String text, String find){
-        return text.replaceAll("\\[1\\]", find);
+    public static String replace(String text, String replace){
+        System.out.println(text +":"+replace);
+        System.out.println(text.replaceAll("\\[1\\]", replace));
+        return text.replaceAll("\\[1\\]", replace);
     }
 
 

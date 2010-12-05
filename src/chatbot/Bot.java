@@ -22,9 +22,9 @@ public class Bot {
     }
 
     // get current state message
-    public String getMessage(String arg) {
+    public String getMessage() {
         State state = parser.getState(level);
-        return state.getMessage(arg);
+        return state.getMessage();
     }
 
     // send user message to the bot and get the response
@@ -60,10 +60,14 @@ public class Bot {
 
                 // get the new state and return the new message
                 if (response.length() == 0) {
+
                     this.level = match.target;
                     state = parser.getState(level);
+                    state.setRegex(match.regexMatch);
+
+                    // if it is end of the tree
                     if (state.getKeywords().isEmpty()) {
-                        response = this.getMessage(match.regexMatch);
+                        response = this.getMessage();
                         this.level = "1";
 
                     }
@@ -114,7 +118,6 @@ public class Bot {
             String match = Regex.match(keyword.keyword, text);
             if(match.length() > 0){
                 keyword.regexMatch = match;
-                System.out.println(match);
                 return 0;
             }
         }

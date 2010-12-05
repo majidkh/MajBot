@@ -19,7 +19,7 @@ public class Main extends javax.swing.JFrame {
         bot = new Bot("0", dp);
 
         // display the default message
-        txtHistory.setText("Bot: " + bot.getMessage(""));
+        txtHistory.setText("Bot: " + bot.getMessage());
 
     }
 
@@ -134,7 +134,7 @@ public class Main extends javax.swing.JFrame {
         }
 
         // display new state message
-        addBotText(bot.getMessage(""));
+        addBotText(bot.getMessage());
 
         // clear the message textbox
         txtMessage.setText("");
