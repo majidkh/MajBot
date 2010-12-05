@@ -21,6 +21,8 @@
         <keyword className="Weather" arg="today">weather</keyword>
         <keyword className="Weather" arg="tomorrow">tomorrow weather</keyword>
         <keyword className="Weather" arg="dayaftertomorrow">day after tomorrow</keyword>
+        <keyword target="15" variable="status">.*I am ([a-zA-Z]+).*</keyword>
+        <keyword target="16" variable="name">.*my name is ([a-zA-z]+).*</keyword>
     </State>
 
     <State id="11">
@@ -51,7 +53,7 @@
     </State>
 
     <State id="16">
-        <message>Hello {name} Good to see you!</message>
+        <message>Hello [name] Good to see you!</message>
     </State>
 
     <State id="21">

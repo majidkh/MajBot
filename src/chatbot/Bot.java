@@ -1,10 +1,8 @@
 package chatbot;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -27,7 +25,7 @@ public class Bot {
     // get current state message
     public String getMessage() {
         State state = parser.getState(level);
-        return state.getMessage();
+        return replaceMatches(state.getMessage()).trim();
     }
 
     // send user message to the bot and get the response
@@ -136,5 +134,18 @@ public class Bot {
             }
         }
         return result;
+    }
+
+
+    // replace given text with variables in the dictionary
+    public static String replaceMatches(String text){
+        
+        // replace variables within dictionary in the text
+        for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+            text = text.replaceAll("\\["+entry.getKey() + "\\]", entry.getValue());
+        }
+
+        // remove empty variables tags
+        return Regex.clear(text);
     }
 }

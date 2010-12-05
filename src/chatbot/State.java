@@ -29,15 +29,7 @@ public class State {
     // get random state messages
     public String getMessage() {
         Random generator = new Random();
-        return getMessage(argument);
-    }
-
-    // replace message dynamic field with given argument
-    public String getMessage(String arg){
-        System.out.println("arg:" + arg);
-        Random generator = new Random();
-        String message = messages.get(generator.nextInt(messages.size()));
-        return Regex.replace(message);
+        return messages.get(generator.nextInt(messages.size()));
     }
 
     // set the argument from regex matcher
