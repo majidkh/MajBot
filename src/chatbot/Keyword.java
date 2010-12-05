@@ -11,6 +11,7 @@ public class Keyword {
     public String className = "";
     public String arg = "";
     public String regex = "";
+    public String regexMatch = "";
 
     // default constructor, constructs a keyword object
     public Keyword(String keyword, String target, String className, String arg, String regex) {

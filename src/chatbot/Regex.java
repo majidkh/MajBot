@@ -17,8 +17,8 @@ import java.util.regex.Pattern;
 public class Regex {
 
     public static String match(String pattern, String keyword){
-        Pattern p = Pattern.compile(pattern);
-        Matcher m = p.matcher(keyword);
+        Pattern p = Pattern.compile(pattern.toLowerCase());
+        Matcher m = p.matcher(keyword.toLowerCase());
         if (m.matches()) {
             System.out.println("matched");
             return m.group(1);

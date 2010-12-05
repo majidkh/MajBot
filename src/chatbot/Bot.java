@@ -109,6 +109,15 @@ public class Bot {
             return 0;
         }
 
+        // if regex is expected
+        if(keyword.regex.length() > 0){
+            String match = Regex.match(keyword.keyword, text);
+            if(match.length() > 0){
+                keyword.regexMatch = match;
+                System.out.println(match);
+                return 0;
+            }
+        }
 
         String[] words = keyword.keyword.split(" ");
 
