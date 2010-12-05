@@ -7,7 +7,7 @@
             <keyword target="13">not happy,not good,not fine,sad,upset</keyword>
             <keyword target="23">fine, good, thanks</keyword>
             <keyword target="14">yourself</keyword>
-            <keyword target="15" arg="{1}">.*I am ([a-zA-Z]+).*</keyword>
+            <keyword target="15" regex="{1}">.*I am ([a-zA-Z]+).*</keyword>
             <keyword target="44">*</keyword>
         </keywords>
     </State>

@@ -10,6 +10,7 @@ public class Keyword {
     public String target = "";
     public String className = "";
     public String arg = "";
+    public String regex = "";
 
     // default constructor, constructs a keyword object
     public Keyword(String keyword, String target, String className, String arg) {
