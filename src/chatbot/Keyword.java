@@ -10,15 +10,14 @@ public class Keyword {
     public String target = "";
     public String className = "";
     public String arg = "";
-    public String regex = "";
-    public String regexMatch = "";
+    public String variable = "";
 
     // default constructor, constructs a keyword object
-    public Keyword(String keyword, String target, String className, String arg, String regex) {
+    public Keyword(String keyword, String target, String className, String arg, String variable) {
         this.keyword = keyword;
         this.target = target;
         this.className = className;
         this.arg = arg;
-        this.regex = regex;
+        this.variable = variable;
     }
 }

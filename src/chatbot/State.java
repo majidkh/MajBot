@@ -37,7 +37,7 @@ public class State {
         System.out.println("arg:" + arg);
         Random generator = new Random();
         String message = messages.get(generator.nextInt(messages.size()));
-        return Regex.replace(message,arg);
+        return Regex.replace(message);
     }
 
     // set the argument from regex matcher

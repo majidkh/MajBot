@@ -2,6 +2,8 @@ package chatbot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -9,6 +11,8 @@ import java.util.List;
  * @author Seyed Majid Khosravi
  */
 public class Bot {
+    // Store all regular expression matches
+    private static HashMap<String,String> dictionary = new HashMap<String,String>();
 
     // Default state to start the bot
     String level = "0";
@@ -16,7 +20,6 @@ public class Bot {
 
     // default constructor
     public Bot(String level, DataParser parser) {
-
         this.level = level;
         this.parser = parser;
     }
@@ -63,7 +66,6 @@ public class Bot {
 
                     this.level = match.target;
                     state = parser.getState(level);
-                    state.setRegex(match.regexMatch);
 
                     // if it is end of the tree
                     if (state.getKeywords().isEmpty()) {
@@ -86,9 +88,6 @@ public class Bot {
 
         // loop through keywords
         for (int i = 0; i < keylist.size(); i++) {
-
-            // extract all words in each keyword text
-            //List<String> keywords = Arrays.asList(keylist.get(i).keyword.split(" "));
 
             // get number of matches of the keyword with given text
             int matches = getMatches(text, keylist.get(i));
@@ -114,10 +113,10 @@ public class Bot {
         }
 
         // if regex is expected
-        if(keyword.regex.length() > 0){
+        if(keyword.variable.length() > 0){
             String match = Regex.match(keyword.keyword, text);
             if(match.length() > 0){
-                keyword.regexMatch = match;
+                dictionary.put(keyword.variable, match);
                 return 0;
             }
         }
