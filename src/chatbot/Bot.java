@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class Bot {
     // Store all regular expression matches
-    private static HashMap<String,String> dictionary = new HashMap<String,String>();
+    private HashMap<String,String> dictionary;
 
     // Default state to start the bot
     String level = "0";
@@ -18,6 +18,7 @@ public class Bot {
 
     // default constructor
     public Bot(String level, DataParser parser) {
+        dictionary = new HashMap<String,String>();
         this.level = level;
         this.parser = parser;
     }
@@ -78,7 +79,7 @@ public class Bot {
     }
 
     // parse the given text to find best match in the keywords
-    private static Keyword parse(String text, ArrayList<Keyword> keylist) {
+    private Keyword parse(String text, ArrayList<Keyword> keylist) {
 
         // set the default match to none
         int bestMatch = -1;
@@ -100,7 +101,7 @@ public class Bot {
     }
 
     // get number of matches of the given keywords in the given list
-    private static int getMatches(String text, Keyword keyword) {
+    private int getMatches(String text, Keyword keyword) {
 
         // no match by default
         int result = -1;
@@ -138,7 +139,7 @@ public class Bot {
 
 
     // replace given text with variables in the dictionary
-    public static String replaceMatches(String text){
+    public String replaceMatches(String text){
         
         // replace variables within dictionary in the text
         for (Map.Entry<String, String> entry : dictionary.entrySet()) {
