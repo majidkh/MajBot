@@ -21,6 +21,7 @@ public class DataParser {
     private HashMap<String, State> states = new HashMap<String, State>();
     private ArrayList<String> invalidMessages = new ArrayList();
     private int invalidMessageIndex = 0;
+    public  int stateCounter = 1000;
 
     // default constructor
     public DataParser() {
@@ -93,6 +94,8 @@ public class DataParser {
                 // construct a new State object
                 State state = new State(id, messages, keywords);
 
+                stateCounter ++;
+
                 // add the state to the states hashmap
                 states.put(id, state);
             }
@@ -102,6 +105,12 @@ public class DataParser {
     // get state object by id
     public State getState(String id) {
         return states.get(id);
+    }
+
+    // create a new state
+    public void addState(State state){
+        states.put(state.getId(), state);
+        stateCounter++;
     }
 
     // get all keywords in an State tag

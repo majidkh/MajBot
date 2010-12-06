@@ -110,12 +110,19 @@ public class Bot {
                 String subject = dictionary.get(match.learn);
                 String result =  match.variableValue;
 
-                Keyword keyword = new Keyword(subject, "28", "", "", "", 1, "" );
+
+                // create a new state for new trained data
+                 ArrayList<String> messages = new ArrayList<String>();
+                messages.add(result);
+                State myState = new State(String.valueOf(parser.stateCounter),messages,new ArrayList());
+                parser.addState(myState);
+
+                // add the new trained keyword
+                Keyword keyword = new Keyword(subject, myState.getId(), "", "", "", 1, "" );
                 State state = parser.getState("1");
                 ArrayList<Keyword> keywords = state.getKeywords();
                 keywords.add(keyword);
 
-                
                 
                 ArrayList<String> data = new ArrayList<String>();
                 if ( training.containsKey(subject)){
