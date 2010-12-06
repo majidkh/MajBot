@@ -11,6 +11,7 @@ public class Keyword {
     public String className = "";
     public String arg = "";
     public String variable = "";
+    public String variableValue = "";
     public int points = 0;
 
     // default constructor, constructs a keyword object

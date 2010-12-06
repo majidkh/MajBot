@@ -3,8 +3,8 @@
     <State id="0">
         <message>Hello, My name is Majid, what is your name?</message>
         <keywords>       
-            <keyword target="16" variable="name">([a-zA-Z ]+)</keyword>
             <keyword target="16" variable="name" points="2">.*my name is ([a-zA-z]+).*</keyword>
+            <keyword target="16" variable="name">([a-zA-Z ]+)</keyword>
         </keywords>
     </State>
 
@@ -54,7 +54,7 @@
     </State>
 
     <State id="16">
-        <message>Hello [name] Good to see you!</message>
+        <message>Hello [name], good to see you!</message>
     </State>
 
     <State id="21">

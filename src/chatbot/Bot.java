@@ -97,6 +97,13 @@ public class Bot {
                 bestMatch = matches;
             }
         }
+
+        // add best answers regex variable value into the dictionary for future reference
+        if (match != null){
+            if (match.variableValue.length() > 0){
+                dictionary.put(match.variable, match.variableValue);
+            }
+        }
         return match;
     }
 
@@ -115,7 +122,8 @@ public class Bot {
         if(keyword.variable.length() > 0){
             String match = Regex.match(keyword.keyword, text);
             if(match.length() > 0){
-                dictionary.put(keyword.variable, match);
+                //dictionary.put(keyword.variable, match);
+                keyword.variableValue = match;
                 return keyword.points;
             }
         }
