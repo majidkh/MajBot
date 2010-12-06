@@ -108,7 +108,7 @@ public class Bot {
 
         // return 0 match when keyword is *
         if(keyword.keyword.equals("*")){
-            return 0;
+            return keyword.points;
         }
 
         // if regex is expected
@@ -116,7 +116,7 @@ public class Bot {
             String match = Regex.match(keyword.keyword, text);
             if(match.length() > 0){
                 dictionary.put(keyword.variable, match);
-                return 0;
+                return keyword.points;
             }
         }
 
@@ -126,9 +126,9 @@ public class Bot {
         // loop through list of the keywords
         for (String word : words) {
 
-            // if current keyword is in the text, add one score
+            // if current keyword is in the text, add points
             if (text.toLowerCase().indexOf(word.toLowerCase()) >= 0) {
-                result++;
+                result = keyword.points + 1;
             } else {
                 // return null if one of the keywords does not exists
                 return -1;
