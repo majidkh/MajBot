@@ -134,6 +134,8 @@ public class DataParser {
                 }catch (Exception e){
                     
                 }
+
+                String learn = el.getAttribute("learn");
                 // split keyword by comma
                 String[] words = wordTag.split(",");
 
@@ -144,7 +146,7 @@ public class DataParser {
                     word = word.trim();
                     
                     // construct a new keyword
-                    Keyword keyword = new Keyword(word, target, className, arg, variable, points);
+                    Keyword keyword = new Keyword(word, target, className, arg, variable, points, learn );
 
                     // add the keyword to keywords array list
                     keywords.add(keyword);

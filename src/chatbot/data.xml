@@ -9,7 +9,6 @@
     </State>
 
     <State id="1">
-        <message>Hello, how are you today?</message>
         <message>What do you want to talk about?</message>
         <message>What else?</message>
         <message>Tell me more...</message>
@@ -19,11 +18,8 @@
         <keyword className="Weather" arg="dayaftertomorrow">day after tomorrow</keyword>
         <keyword target="15" variable="status">.*I am ([a-zA-Z]+).*</keyword>
         <keyword target="16" variable="name">.*my name is ([a-zA-z]+).*</keyword>
-        <keyword target="11">happy, very happy</keyword>
-        <keyword target="13">not happy,not good,not fine,sad,upset</keyword>
-        <keyword target="23">fine, good, thanks</keyword>
-        <keyword target="14">yourself</keyword>
         <keyword target="15" variable="status">.*I am ([a-zA-Z]+).*</keyword>
+        <keyword variable="subject" target="27" training="true">([a-zA-z]+)</keyword>
     </State>
 
     <State id="11">
@@ -54,7 +50,11 @@
     </State>
 
     <State id="16">
-        <message>Hello [name], good to see you!</message>
+        <message>Hello [name], how are you today?</message>
+        <keyword target="11">happy, very happy</keyword>
+        <keyword target="13">not happy,not good,not fine,sad,upset</keyword>
+        <keyword target="23">fine, good, thanks</keyword>
+        <keyword target="14">yourself</keyword>
     </State>
 
     <State id="21">
@@ -91,6 +91,11 @@
     <State id="26">
         <message>[name] do you think that is a good reason to be [status]?</message>
         <keyword target="43">*</keyword>
+    </State>
+
+    <State id="27">
+        <message>What is [subject]?</message>
+        <keyword target="43" variable="result" learn="subject">(.*)</keyword>
     </State>
 
     <State id="31">
