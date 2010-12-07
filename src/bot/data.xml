@@ -19,7 +19,7 @@
         <keyword target="15" variable="status">.*I am ([a-zA-Z]+).*</keyword>
         <keyword target="16" variable="name">.*my name is ([a-zA-z]+).*</keyword>
         <keyword target="15" variable="status">.*I am ([a-zA-Z]+).*</keyword>
-        <keyword variable="subject" target="27" training="true">([a-zA-z]+)</keyword>
+        <keyword variable="subject" target="27">([a-zA-z]+)</keyword>
     </State>
 
     <State id="11">
