@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
  */
 public class Regex {
 
-
     public static String match(String pattern, String keyword){
         Pattern p = Pattern.compile(pattern.toLowerCase());
         Matcher m = p.matcher(keyword.toLowerCase());
@@ -32,5 +31,4 @@ public class Regex {
         Matcher matcher = pattern.matcher(text);
         return matcher.replaceAll("");
     }
-
 }

@@ -26,6 +26,4 @@ public class Keyword {
         this.points = points;
         this.learn = learn;
     }
-
-
 }

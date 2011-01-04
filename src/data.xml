@@ -3,7 +3,7 @@
     <State id="0">
         <message>Hello, My name is MajBot, what is your name?</message>
         <keywords>       
-            <keyword target="16" variable="name" points="2">.*my name is ([a-zA-z]+).*</keyword>
+            <keyword target="16" variable="name" points="2">.*name is ([a-zA-z]+).*</keyword>
             <keyword target="16" variable="name">([a-zA-Z ]+)</keyword>
         </keywords>
     </State>
@@ -18,7 +18,6 @@
         <keyword className="Weather" arg="dayaftertomorrow">day after tomorrow</keyword>
         <keyword target="15" variable="status">.*I am ([a-zA-Z]+).*</keyword>
         <keyword target="16" variable="name">.*my name is ([a-zA-z]+).*</keyword>
-        <keyword target="15" variable="status">.*I am ([a-zA-Z]+).*</keyword>
         <keyword variable="subject" target="27">([a-zA-z]+)</keyword>
     </State>
 
@@ -54,7 +53,6 @@
         <keyword target="11">happy, very happy</keyword>
         <keyword target="13">not happy,not good,not fine,sad,upset</keyword>
         <keyword target="23">fine, good, thanks</keyword>
-        <keyword target="14">yourself</keyword>
     </State>
 
     <State id="21">

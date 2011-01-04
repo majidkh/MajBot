@@ -13,9 +13,6 @@ public class Bot {
     // Store all regular expression matches
     private HashMap<String,String> dictionary;
 
-    // stores data from training by asking questions from users
-    private HashMap<String,ArrayList<String>> training;
-
     // Default state to start the bot
     String level = "0";
     DataParser parser;
@@ -23,7 +20,6 @@ public class Bot {
     // default constructor
     public Bot(String level, DataParser parser) {
         dictionary = new HashMap<String,String>();
-        training = new HashMap<String,ArrayList<String>>();
         this.level = level;
         this.parser = parser;
     }
@@ -107,6 +103,7 @@ public class Bot {
         if (match != null){
             if(match.learn.length() > 0 ){
 
+                // get training data keyword and description
                 String subject = dictionary.get(match.learn);
                 String result =  match.variableValue;
 
@@ -122,15 +119,6 @@ public class Bot {
                 State state = parser.getState("1");
                 ArrayList<Keyword> keywords = state.getKeywords();
                 keywords.add(keyword);
-
-                
-                ArrayList<String> data = new ArrayList<String>();
-                if ( training.containsKey(subject)){
-                    data = training.get(subject);
-                }
-                data.add(result);
-                training.put(subject, data);
-
 
             }else{
                 if (match.variableValue.length() > 0){
@@ -169,7 +157,7 @@ public class Bot {
 
             // if current keyword is in the text, add points
             if (text.toLowerCase().indexOf(word.toLowerCase()) >= 0) {
-                result = keyword.points + 1;
+                result = result + keyword.points + 1;
             } else {
                 // return null if one of the keywords does not exists
                 return -1;
