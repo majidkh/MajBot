@@ -4,7 +4,8 @@ Each state can expect multiple keywords or no keywords which returns user to the
 
 <img class="alignnone size-full wp-image-254" title="chat-bot" alt="Chat Bot" src="http://www.majidkhosravi.com/wp-content/uploads/2012/08/chat-bot.png" width="591" height="341" />
 
-License: GPL, download link is available at the bottom of this article.
+License: GPL
+
 <h2>At a glance</h2>
 It is easy to customize the MajBot by configuring data.xml file, this file contains different states and keywords inside each state, once a keyword is matched, user will be transferred to the target state, MajBot stats from State “0” by default, here is a simple configuration file:
 <pre>&lt;?xml<strong> </strong>version="1.0"<strong> </strong>encoding="UTF-8"?&gt;
@@ -123,4 +124,6 @@ If you are using windows, you can run run.bat file instead.
 
 After starting the bot, user can enter a message and start chating with MajBot.
 
-Download link: <a title="MajBot" href="https://github.com/majidkh/MajBot">Download MajBot source from GitHub.com</a>
+Enjoy!
+
+<a title="MajBot" href="http://www.majidkhosravi.com/chat-bot/">http://www.majidkhosravi.com/chat-bot/</a>
